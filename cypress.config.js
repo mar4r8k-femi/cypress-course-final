@@ -1,17 +1,11 @@
-const { defineConfig } = require("cypress");
-
-module.exports = defineConfig({
+module.exports = {
+  projectId: "sjnkd5",
+  video: true,
+  videoUploadOnPasses: false,
   e2e: {
-    baseUrl: "http://localhost:3000",
+    // e2e testing configuration
     setupNodeEvents(on, config) {
       // implement node event listeners here
-    },
-  },
-
-  component: {
-    devServer: {
-      framework: "next",
-      bundler: "webpack",
-    },
-  },
-});
+    }
+  }
+}
