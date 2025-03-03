@@ -25,65 +25,32 @@ pipeline:
                   spec:
                     shell: Sh
                     command: npm start
-              - parallel:
-                  - step:
-                      type: Run
-                      name: Cypress Tests 1
-                      identifier: Cypress_Tests_1
-                      spec:
-                        connectorRef: femidockerhub
-                        image: cypress/browsers:node14.16.0-chrome90-ff88
-                        shell: Sh
-                        command: |-
-                          command: |
-                            # Create app directory if it doesn't exist
-                            mkdir -p /app
-                            
-                            # Clone your repository into /app
-                            # Replace with your actual repository URL
-                            git clone https://github.com/mar4r8k-femi/cypress-course-final.git /app
-                            
-                            # Navigate to the directory
-                            cd /app
-                            
-                            # Install dependencies
-                            npm install
-                            
-                            # Run Cypress tests
-                            npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
-                      envVariables:
-                        CYPRESS_RECORD_KEY: <+secrets.getValue("cypress_record_key")>
-                        CYPRESS_PARALLEL: "true"
-                        HARNESS_BUILD_ID: <+pipeline.sequenceId>
-                  - step:
-                      type: Run
-                      name: Cypress Tests 2
-                      identifier: Cypress_Tests_2
-                      spec:
-                        connectorRef: femidockerhub
-                        image: cypress/browsers:node14.16.0-chrome90-ff88
-                        shell: Sh
-                        command: |-
-                          command: |
-                            # Create app directory if it doesn't exist
-                            mkdir -p /app
-                            
-                            # Clone your repository into /app
-                            # Replace with your actual repository URL
-                            git clone https://github.com/mar4r8k-femi/cypress-course-final.git /app
-                            
-                            # Navigate to the directory
-                            cd /app
-                            
-                            # Install dependencies
-                            npm install
-                            
-                            # Run Cypress tests
-                            npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
-                      envVariables:
-                        CYPRESS_RECORD_KEY: <+secrets.getValue("cypress_record_key")>
-                        CYPRESS_PARALLEL: "true"
-                        HARNESS_BUILD_ID: <+pipeline.sequenceId>
+              - step:
+                  type: Test
+                  name: Cypress Test
+                  identifier: Cypress_Test
+                  spec:
+                    connectorRef: femidockerhub
+                    image: cypress/browsers:node14.16.0-chrome90-ff88
+                    shell: Sh
+                    command: |-
+                      command: |
+                        # Create app directory if it doesn't exist
+                        mkdir -p /app
+                        
+                        # Clone your repository into /app
+                        # Replace with your actual repository URL
+                        git clone https://github.com/mar4r8k-femi/cypress-course-final.git /app
+                        
+                        # Navigate to the directory
+                        cd /app
+                        
+                        # Install dependencies
+                        npm install
+                        
+                        # Run Cypress tests
+                        npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
+                    intelligenceMode: true
           cloneCodebase: true
           caching:
             enabled: true
