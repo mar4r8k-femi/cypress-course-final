@@ -36,6 +36,7 @@ pipeline:
                         shell: Sh
                         command: |-
                           # Clone your repo and navigate to it
+                          mkdir -p /app
                           cd /app
                           npm install
                           npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
@@ -53,6 +54,7 @@ pipeline:
                         shell: Sh
                         command: |-
                           # Clone your repo and navigate to it
+                          mkdir -p /app
                           cd /app
                           npm install
                           npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
