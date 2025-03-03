@@ -61,3 +61,17 @@ pipeline:
                         CYPRESS_RECORD_KEY: <+secrets.getValue("cypress_record_key")>
                         CYPRESS_PARALLEL: "true"
                         HARNESS_BUILD_ID: <+pipeline.sequenceId>
+          cloneCodebase: true
+          caching:
+            enabled: false
+            paths: []
+          buildIntelligence:
+            enabled: false
+        description: ""
+  properties:
+    ci:
+      codebase:
+        connectorRef: femigithub
+        repoName: https://github.com/mar4r8k-femi/cypress-course-final
+        build: <+input>
+        sparseCheckout: []
