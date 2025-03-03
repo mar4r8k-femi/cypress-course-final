@@ -45,11 +45,6 @@ pipeline:
                             # Install dependencies
                             npm install
                             
-                            # Add the cy:run script to package.json if it doesn't exist
-                            if ! grep -q "cy:run" package.json; then
-                              sed -i 's/"scripts": {/"scripts": {\n    "cy:run": "cypress run",/g' package.json
-                            fi
-                            
                             # Run Cypress tests
                             npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
                       envVariables:
@@ -74,11 +69,6 @@ pipeline:
                             
                             # Install dependencies
                             npm install
-                            
-                            # Add the cy:run script to package.json if it doesn't exist
-                            if ! grep -q "cy:run" package.json; then
-                              sed -i 's/"scripts": {/"scripts": {\n    "cy:run": "cypress run",/g' package.json
-                            fi
                             
                             # Run Cypress tests
                             npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
