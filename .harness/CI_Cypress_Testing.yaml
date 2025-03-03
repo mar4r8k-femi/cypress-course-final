@@ -98,3 +98,4 @@ pipeline:
         repoName: cypress-course-final
         build: <+input>
         sparseCheckout: []
+  description: https://engineering.harness.io/using-cypress-parallelization-with-harness-ci-15c149288df4
