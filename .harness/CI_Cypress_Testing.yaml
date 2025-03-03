@@ -36,11 +36,15 @@ pipeline:
                         shell: Sh
                         command: |-
                           command: |
-                            # Navigate to the cloned codebase directory
-                            cd <+codebase.path>
+                            # Create app directory if it doesn't exist
+                            mkdir -p /app
                             
-                            # List files to confirm we're in the right place
-                            ls -la
+                            # Clone your repository into /app
+                            # Replace with your actual repository URL
+                            git clone https://github.com/mar4r8k-femi/cypress-course-final.git /app
+                            
+                            # Navigate to the directory
+                            cd /app
                             
                             # Install dependencies
                             npm install
@@ -61,11 +65,15 @@ pipeline:
                         shell: Sh
                         command: |-
                           command: |
-                            # Navigate to the cloned codebase directory
-                            cd <+codebase.path>
+                            # Create app directory if it doesn't exist
+                            mkdir -p /app
                             
-                            # List files to confirm we're in the right place
-                            ls -la
+                            # Clone your repository into /app
+                            # Replace with your actual repository URL
+                            git clone https://github.com/mar4r8k-femi/cypress-course-final.git /app
+                            
+                            # Navigate to the directory
+                            cd /app
                             
                             # Install dependencies
                             npm install
