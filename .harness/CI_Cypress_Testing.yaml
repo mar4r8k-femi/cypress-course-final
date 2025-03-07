@@ -26,12 +26,10 @@ pipeline:
                     shell: Sh
                     command: npm start
               - step:
-                  type: Test
-                  name: Cypress Test
-                  identifier: Cypress_Test
+                  type: Run
+                  name: Run Tests
+                  identifier: Run_Tests
                   spec:
-                    connectorRef: femidockerhub
-                    image: cypress/browsers:node14.16.0-chrome90-ff88
                     shell: Sh
                     command: |-
                       command: |
@@ -50,7 +48,8 @@ pipeline:
                         
                         # Run Cypress tests
                         npm run cy:run -- --ci-build-id $HARNESS_BUILD_ID
-                    intelligenceMode: true
+                  strategy:
+                    parallelism: 3
           cloneCodebase: true
           caching:
             enabled: true
